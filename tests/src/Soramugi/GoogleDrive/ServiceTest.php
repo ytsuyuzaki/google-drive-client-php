@@ -5,16 +5,18 @@ namespace Soramugi\GoogleDrive\Tests;
 use Soramugi\GoogleDrive\Service;
 use Mockery;
 
-class ServiceTest extends \PHPUnit_Framework_TestCase
+class ServiceTest extends \PHPUnit\Framework\TestCase
 {
-    function setUp()
+    protected ?\Soramugi\GoogleDrive\Service $service = null;
+    function setUp(): void
     {
-        $client = Mockery::mock('Soramugi\GoogleDrive\Client[]');
+        $client = Mockery::mock('Soramugi\GoogleDrive\Client');
         $client->shouldReceive('setUseObjects')->with(false);
+        $client->shouldReceive('addService');
         $this->service = new Service($client);
     }
 
-    function tearDown()
+    function tearDown(): void
     {
         $this->service = null;
     }

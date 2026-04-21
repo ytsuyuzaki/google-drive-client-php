@@ -9,9 +9,6 @@ class Spreadsheet extends File
         $this->setMimeType('text/csv');
         $this->setOptParams(array('convert' => true));
 
-        return call_user_func_array(
-            array($this, 'parent::__construct'),
-            func_get_args()
-        );
+        parent::__construct(...func_get_args());
     }
 }

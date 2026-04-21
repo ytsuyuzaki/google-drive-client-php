@@ -5,14 +5,15 @@ namespace Soramugi\GoogleDrive\Tests;
 use Soramugi\GoogleDrive\FileLabels;
 use Mockery;
 
-class FileLabelsTest extends \PHPUnit_Framework_TestCase
+class FileLabelsTest extends \PHPUnit\Framework\TestCase
 {
-    function setUp()
+    protected ?FileLabels $fileLabels = null;
+    function setUp(): void
     {
         $this->fileLabels = new FileLabels;
     }
 
-    function tearDown()
+    function tearDown(): void
     {
         $this->fileLabels = null;
     }

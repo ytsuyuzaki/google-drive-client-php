@@ -5,14 +5,15 @@ namespace Soramugi\GoogleDrive\Tests;
 use Soramugi\GoogleDrive\File;
 use Mockery;
 
-class FileTest extends \PHPUnit_Framework_TestCase
+class FileTest extends \PHPUnit\Framework\TestCase
 {
-    function setUp()
+    protected ?\Soramugi\GoogleDrive\File $file = null;
+    function setUp(): void
     {
         $this->file = new File;
     }
 
-    function tearDown()
+    function tearDown(): void
     {
         $this->file = null;
     }
@@ -36,7 +37,7 @@ class FileTest extends \PHPUnit_Framework_TestCase
     function testInsert()
     {
         $file = Mockery::mock('Soramugi\GoogleDrive\File[getFiles]');
-        $files = Mockery::mock('Soramugi\GoogleDrive\Files[insert]');
+        $files = Mockery::mock('Soramugi\GoogleDrive\Files');
         $data = 'hi';
         $optParams = array(
                 'data'     => $data,

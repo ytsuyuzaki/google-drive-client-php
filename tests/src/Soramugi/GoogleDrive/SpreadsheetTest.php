@@ -4,14 +4,15 @@ namespace Soramugi\GoogleDrive\Tests;
 
 use Soramugi\GoogleDrive\Spreadsheet;
 
-class SpreadsheetTest extends \PHPUnit_Framework_TestCase
+class SpreadsheetTest extends \PHPUnit\Framework\TestCase
 {
-    function setUp()
+    protected ?\Soramugi\GoogleDrive\Spreadsheet $spreadsheet = null;
+    function setUp(): void
     {
         $this->spreadsheet = new Spreadsheet;
     }
 
-    function tearDown()
+    function tearDown(): void
     {
         $this->spreadsheet = null;
     }

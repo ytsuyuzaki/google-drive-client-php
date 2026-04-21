@@ -13,16 +13,17 @@ class FilesExt extends Files
     }
 }
 
-class FilesTest extends \PHPUnit_Framework_TestCase
+class FilesTest extends \PHPUnit\Framework\TestCase
 {
-    function setUp()
+    protected ?\Soramugi\GoogleDrive\Files $files = null;
+    function setUp(): void
     {
         $client = Mockery::mock('Soramugi\GoogleDrive\Client');
         $files = new Files($client);
         $this->files = $files;
     }
 
-    function tearDown()
+    function tearDown(): void
     {
         $this->files = null;
     }
@@ -43,9 +44,9 @@ class FilesTest extends \PHPUnit_Framework_TestCase
     function testListFiles()
     {
         $method = 'listFiles';
-        $_files = Mockery::mock("\Google_FilesServiceResource[$method]");
+        $_files = Mockery::mock("\Google_FilesServiceResource");
         $_files->shouldReceive($method)->andReturn(array());
-        $service = Mockery::mock('Soramugi\GoogleDrive\Service[getFiles]');
+        $service = Mockery::mock('Soramugi\GoogleDrive\Service');
         $service->shouldReceive('getFiles')->andReturn($_files);
         $files = new FilesExt('');
         $files->setService($service);
@@ -56,16 +57,14 @@ class FilesTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @dataProvider callMethods
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('callMethods')]
     function testCallReturnFile()
     {
         $args = func_get_args();
         $method = array_shift($args);
-        $_files = Mockery::mock("\Google_FilesServiceResource[$method]");
+        $_files = Mockery::mock("\Google_FilesServiceResource");
         $_files->shouldReceive($method)->andReturn(array());
-        $service = Mockery::mock('Soramugi\GoogleDrive\Service[getFiles]');
+        $service = Mockery::mock('Soramugi\GoogleDrive\Service');
         $service->shouldReceive('getFiles')->andReturn($_files);
         $files = new FilesExt('');
         $files->setService($service);
@@ -76,7 +75,7 @@ class FilesTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    function callMethods()
+    static function callMethods()
     {
         $file      = Mockery::mock('Soramugi\GoogleDrive\File');
         $fileId    = 'hugehuge';
@@ -107,7 +106,8 @@ class FilesTest extends \PHPUnit_Framework_TestCase
             array($fileFoo, $fileVar, $fileHivarbor)
         );
 
-        $files = Mockery::mock('Soramugi\GoogleDrive\Files[listFiles]');
+        $mockClient = Mockery::mock('Soramugi\GoogleDrive\Client');
+        $files = Mockery::mock('Soramugi\GoogleDrive\Files[listFiles]', [$mockClient]);
         $files->shouldReceive('listFiles')->andReturn($fileList);
 
         $keyword = 'neko';
