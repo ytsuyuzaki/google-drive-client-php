@@ -13,16 +13,16 @@ class FilesExt extends Files
     }
 }
 
-class FilesTest extends \PHPUnit_Framework_TestCase
+class FilesTest extends \PHPUnit\Framework\TestCase
 {
-    function setUp()
+    function setUp(): void
     {
         $client = Mockery::mock('Soramugi\GoogleDrive\Client');
         $files = new Files($client);
         $this->files = $files;
     }
 
-    function tearDown()
+    function tearDown(): void
     {
         $this->files = null;
     }
@@ -59,6 +59,7 @@ class FilesTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider callMethods
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('callMethods')]
     function testCallReturnFile()
     {
         $args = func_get_args();
@@ -76,7 +77,7 @@ class FilesTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    function callMethods()
+    static function callMethods()
     {
         $file      = Mockery::mock('Soramugi\GoogleDrive\File');
         $fileId    = 'hugehuge';

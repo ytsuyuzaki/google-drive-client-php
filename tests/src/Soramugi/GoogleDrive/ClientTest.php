@@ -4,7 +4,7 @@ namespace Soramugi\GoogleDrive\Tests;
 
 use Soramugi\GoogleDrive\Client;
 
-class ClientTest extends \PHPUnit_Framework_TestCase
+class ClientTest extends \PHPUnit\Framework\TestCase
 {
     function testNew()
     {

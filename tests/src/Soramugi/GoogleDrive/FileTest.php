@@ -5,14 +5,14 @@ namespace Soramugi\GoogleDrive\Tests;
 use Soramugi\GoogleDrive\File;
 use Mockery;
 
-class FileTest extends \PHPUnit_Framework_TestCase
+class FileTest extends \PHPUnit\Framework\TestCase
 {
-    function setUp()
+    function setUp(): void
     {
         $this->file = new File;
     }
 
-    function tearDown()
+    function tearDown(): void
     {
         $this->file = null;
     }

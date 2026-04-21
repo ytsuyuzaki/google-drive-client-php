@@ -4,7 +4,7 @@ namespace Soramugi\GoogleDrive\Tests;
 
 use Soramugi\GoogleDrive\FileList;
 
-class FileListTest extends \PHPUnit_Framework_TestCase
+class FileListTest extends \PHPUnit\Framework\TestCase
 {
     function testUseObjects()
     {

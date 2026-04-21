@@ -1,42 +1,28 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<phpunit backupGlobals="true"
-         backupStaticAttributes="false"
-         bootstrap="vendor/autoload.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="false"
-         convertWarningsToExceptions="false"
-         processIsolation="false"
-         stopOnError="false"
-         stopOnFailure="false"
-         stopOnIncomplete="false"
-         stopOnSkipped="false"
-         syntaxCheck="true"
-         strict="true"
-         verbose="true">
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="true" bootstrap="vendor/autoload.php" colors="true" processIsolation="false" stopOnError="false" stopOnFailure="false" stopOnIncomplete="false" stopOnSkipped="false">
   <testsuites>
     <testsuite name="Soramugi\\GoogleDrive Test Suite">
       <directory>tests</directory>
     </testsuite>
   </testsuites>
-
   <logging>
-    <log type="coverage-html" target="builds/coverage" title="google-drive-client-php"
-      charset="UTF-8" yui="true" highlight="true"
-      lowUpperBound="35" highLowerBound="70"/>
-    <log type="coverage-clover" target="builds/logs/clover.xml"/>
-    <log type="junit" target="builds/logs/junit.xml" logIncompleteSkipped="false"/>
+    <junit outputFile="builds/logs/junit.xml"/>
   </logging>
-
-  <filter>
-    <whitelist addUncoveredFilesFromWhitelist="true">
+  <coverage>
+    <report>
+      <html outputDirectory="builds/coverage" lowUpperBound="35" highLowerBound="70"/>
+      <clover outputFile="builds/logs/clover.xml"/>
+    </report>
+  </coverage>
+  <source>
+    <include>
       <directory suffix=".php">src</directory>
-      <exclude>
-        <directory>tests</directory>
-        <directory>builds</directory>
-        <directory>vendor</directory>
-        <directory>examples</directory>
-      </exclude>
-    </whitelist>
-  </filter>
+    </include>
+    <exclude>
+      <directory>tests</directory>
+      <directory>builds</directory>
+      <directory>vendor</directory>
+      <directory>examples</directory>
+    </exclude>
+  </source>
 </phpunit>

@@ -2,7 +2,7 @@
 
 namespace Soramugi\GoogleDrive\Tests;
 
-class ComposerJsonTest extends \PHPUnit_Framework_TestCase
+class ComposerJsonTest extends \PHPUnit\Framework\TestCase
 {
     function testJson()
     {
