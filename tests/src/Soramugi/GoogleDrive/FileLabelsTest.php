@@ -7,6 +7,7 @@ use Mockery;
 
 class FileLabelsTest extends \PHPUnit\Framework\TestCase
 {
+    protected ?FileLabels $fileLabels = null;
     function setUp(): void
     {
         $this->fileLabels = new FileLabels;

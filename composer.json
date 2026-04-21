@@ -8,7 +8,20 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^11.5",
-        "mockery/mockery": "^1.6"
+        "mockery/mockery": "^1.6",
+        "cweagans/composer-patches": "^1.7"
+    },
+    "extra": {
+        "patches": {
+            "soramugi/google-api": {
+                "Fix PHP 8 incompatible curly-brace string offset access": "patches/soramugi-google-api-php8-compat.patch"
+            }
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "cweagans/composer-patches": true
+        }
     },
     "authors": [
         {

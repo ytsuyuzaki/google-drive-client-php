@@ -6,6 +6,7 @@ use Soramugi\GoogleDrive\Spreadsheet;
 
 class SpreadsheetTest extends \PHPUnit\Framework\TestCase
 {
+    protected ?\Soramugi\GoogleDrive\Spreadsheet $spreadsheet = null;
     function setUp(): void
     {
         $this->spreadsheet = new Spreadsheet;

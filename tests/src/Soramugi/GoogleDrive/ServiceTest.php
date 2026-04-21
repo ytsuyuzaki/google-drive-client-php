@@ -7,10 +7,12 @@ use Mockery;
 
 class ServiceTest extends \PHPUnit\Framework\TestCase
 {
+    protected ?\Soramugi\GoogleDrive\Service $service = null;
     function setUp(): void
     {
-        $client = Mockery::mock('Soramugi\GoogleDrive\Client[]');
+        $client = Mockery::mock('Soramugi\GoogleDrive\Client');
         $client->shouldReceive('setUseObjects')->with(false);
+        $client->shouldReceive('addService');
         $this->service = new Service($client);
     }
 

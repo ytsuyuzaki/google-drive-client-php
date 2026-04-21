@@ -7,6 +7,7 @@ use Mockery;
 
 class FileTest extends \PHPUnit\Framework\TestCase
 {
+    protected ?\Soramugi\GoogleDrive\File $file = null;
     function setUp(): void
     {
         $this->file = new File;
@@ -36,7 +37,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
     function testInsert()
     {
         $file = Mockery::mock('Soramugi\GoogleDrive\File[getFiles]');
-        $files = Mockery::mock('Soramugi\GoogleDrive\Files[insert]');
+        $files = Mockery::mock('Soramugi\GoogleDrive\Files');
         $data = 'hi';
         $optParams = array(
                 'data'     => $data,
